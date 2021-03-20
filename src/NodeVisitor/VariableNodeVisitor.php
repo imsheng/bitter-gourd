@@ -8,6 +8,18 @@ use PhpParser\NodeVisitorAbstract;
 
 class VariableNodeVisitor extends NodeVisitorAbstract
 {
+    public function enterNode(Node $node)
+    {
+        if ($node instanceof Node\Expr\Variable) {
+            $parentNode = $node->getAttribute('parent');
+            if ($parentNode->getAttribute('child_dont_converted') == true) {
+                $node->setAttribute('child_dont_converted', true);
+                $node->setAttribute('converted', true);
+                return $node;
+            }
+        }
+        return null;
+    }
 
     public function leaveNode(Node $node)
     {
@@ -36,15 +48,15 @@ class VariableNodeVisitor extends NodeVisitorAbstract
                 return null;
             }
 
-/*            if ($parentNode instanceof Node\Expr\ArrayItem) {
-                if ($parentNode->getAttribute('parent') instanceof Node\Expr\Array_) {
-                    if ($parentNode->getAttribute('parent')->getAttribute('parent') instanceof Node\Expr\Assign) {
-                        if ($parentNode->getAttribute('parent')->getAttribute('parent')->var === $parentNode->getAttribute('parent')) {
-                            return $node;
-                        }
-                    }
-                }
-            }*/
+            /*            if ($parentNode instanceof Node\Expr\ArrayItem) {
+                            if ($parentNode->getAttribute('parent') instanceof Node\Expr\Array_) {
+                                if ($parentNode->getAttribute('parent')->getAttribute('parent') instanceof Node\Expr\Assign) {
+                                    if ($parentNode->getAttribute('parent')->getAttribute('parent')->var === $parentNode->getAttribute('parent')) {
+                                        return $node;
+                                    }
+                                }
+                            }
+                        }*/
 
             /*            if ($parentNode instanceof Node\Expr\MethodCall) {
                             return null;

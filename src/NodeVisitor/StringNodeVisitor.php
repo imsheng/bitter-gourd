@@ -8,6 +8,18 @@ use PhpParser\NodeVisitorAbstract;
 
 class StringNodeVisitor extends NodeVisitorAbstract
 {
+    public function enterNode(Node $node)
+    {
+        if ($node instanceof Node\Scalar\String_) {
+            $parentNode = $node->getAttribute('parent');
+            if ($parentNode->getAttribute('child_dont_converted') == true) {
+                $node->setAttribute('child_dont_converted', true);
+                $node->setAttribute('converted', true);
+                return $node;
+            }
+        }
+        return null;
+    }
 
     public function leaveNode(Node $node)
     {
