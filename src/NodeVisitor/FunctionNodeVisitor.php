@@ -20,7 +20,7 @@ class FunctionNodeVisitor extends NodeVisitorAbstract
                 return $node;
             }
 
-            $fClassStr = sprintf('BitterGourd\NodeVisitor\Converter\Func\%s', $inflector->classify($node->name->parts[0]));
+            $fClassStr = sprintf('BitterGourd\NodeVisitor\Func\%s', $inflector->classify($node->name->parts[0]));
 
             if ($node->name instanceof Node\Name && class_exists($fClassStr)) {
                 $fClass = new $fClassStr();

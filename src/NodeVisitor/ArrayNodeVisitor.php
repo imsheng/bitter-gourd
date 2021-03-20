@@ -2,7 +2,6 @@
 
 namespace BitterGourd\NodeVisitor;
 
-use BitterGourd\Common;
 use PhpParser\Node;
 use PhpParser\NodeVisitorAbstract;
 
