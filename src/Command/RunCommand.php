@@ -39,7 +39,8 @@ class RunCommand extends Command
                 new InputDefinition([
                     new InputOption('path', 'p', InputArgument::OPTIONAL, 'Select a directory or file path.'),
                     new InputOption('loop', 'l', InputArgument::OPTIONAL, 'Loop. The default value is 1 (max:3)'),
-                    new InputOption('test', 't', InputArgument::REQUIRED, 'Test. Create the test file')
+                    new InputOption('test', 't', InputArgument::REQUIRED, 'Test. Create the test file'),
+                    new InputOption('strip', 's', InputArgument::REQUIRED, 'Clear comments and whitespace'),
                 ])
             );
     }
@@ -82,9 +83,11 @@ class RunCommand extends Command
             $phpFiles = [$path];
         }
 
+        $isStrip = $input->getOption('strip');
+
         foreach ($phpFiles as $phpFile) {
             $output->writeln($phpFile);
-            $code = trim(file_get_contents($phpFile));
+            $code = $isStrip ? php_strip_whitespace($phpFile) : trim(file_get_contents($phpFile));
 
             for ($i = 0; $i < $loop; $i++) {
                 $code = $this->obscure($code);
