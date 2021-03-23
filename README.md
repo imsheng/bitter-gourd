@@ -27,7 +27,8 @@ Quick Start
 
 Functions that can be converted
 -----------
-array_merge, count, array_push, trim, strlen, mb_strlen, str_shuffle, hex2bin, time
+array_merge, count, array_push, trim, strlen, mb_strlen, str_shuffle, hex2bin, time, 
+array_column, array_search, array_sum, array_unique, array_values, in_array, range,
 
 Example
 -----------

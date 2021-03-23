@@ -4,7 +4,7 @@
     "license": "MIT",
     "require": {
         "php": ">=7.0",
-        "nikic/php-parser": "^4.3",
+        "nikic/php-parser": "^4.10",
         "symfony/console": "^5.0",
         "symfony/filesystem": "^5.0",
         "symfony/finder": "^5.0",
@@ -13,9 +13,13 @@
     },
     "keywords": [
         "obfuscator",
-        "php obfuscator",
+        "php-obfuscator",
         "php",
-        "php code encryption"
+        "obfuscation",
+        "php-obfuscation",
+        "php code encryption",
+        "obfuscate",
+        "php-obfuscate"
     ],
     "authors": [
         {

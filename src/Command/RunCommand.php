@@ -3,6 +3,7 @@
 namespace BitterGourd\Command;
 
 use BitterGourd\NodeVisitor\ArrayNodeVisitor;
+use BitterGourd\NodeVisitor\ConstFetchNodeVisitor;
 use BitterGourd\NodeVisitor\ForeachNodeVisitor;
 use BitterGourd\NodeVisitor\ForNodeVisitor;
 use BitterGourd\NodeVisitor\FunctionNodeVisitor;
@@ -123,13 +124,14 @@ class RunCommand extends Command
         $traverser->addVisitor(new ParamNodeVisitor());
         $traverser->addVisitor(new ForeachNodeVisitor());
         $traverser->addVisitor(new ForNodeVisitor());
-        $traverser->addVisitor(new IfNodeVisitor());
+        //$traverser->addVisitor(new IfNodeVisitor());
         $traverser->addVisitor(new ArrayNodeVisitor());
         //$traverser->addVisitor(new SwitchNodeVisitor());
         $traverser->addVisitor(new MethodCallNodeVisitor());
         $traverser->addVisitor(new PropertyFetchNodeVisitor());
         $traverser->addVisitor(new FunctionNodeVisitor());
         $traverser->addVisitor(new StringNodeVisitor());
+        $traverser->addVisitor(new ConstFetchNodeVisitor());
         $traverser->addVisitor(new VariableNodeVisitor());
         ////x$traverser->addVisitor(new LineNodeVisitor());
         $ast = $traverser->traverse($ast);
