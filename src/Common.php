@@ -15,14 +15,10 @@ class Common
      */
     public static function stringNToFuncN($string)
     {
-        if (mb_strlen($string) <= 1) {
-            return new Node\Scalar\String_($string);
-        }
-
-        $binString = str_rot13($string);
+        $binString = base64_encode($string);
         $code = <<<EOF
             <?php
-            str_rot13('$binString');
+            base64_decode('$binString');
 EOF;
         $parser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7);
         $ast = $parser->parse(trim($code));

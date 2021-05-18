@@ -15,7 +15,6 @@ class ArrayNodeVisitor extends NodeVisitorAbstract
         if ($node instanceof Node\Expr\Array_ || $node instanceof Node\Expr\ArrayItem) {
             if ($parentNode->getAttribute('child_dont_converted') == true) {
                 $node->setAttribute('child_dont_converted', true);
-                $node->setAttribute('converted', true);
                 return $node;
             }
         }

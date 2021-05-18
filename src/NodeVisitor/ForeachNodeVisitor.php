@@ -17,7 +17,7 @@ class ForeachNodeVisitor extends NodeVisitorAbstract
                 return null;
             }
 
-            if (!$node->keyVar instanceof Node\Expr\Variable) {
+            if ($node->keyVar != null && !$node->keyVar instanceof Node\Expr\Variable) {
                 return null;
             }
 

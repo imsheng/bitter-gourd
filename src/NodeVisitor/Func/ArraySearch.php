@@ -28,7 +28,8 @@ EOF;
         $newNode = $newNode[0];
 
         //$newNode->expr->args[1]->value->items[0]->value = $fArgs;
-        $newNode->expr->args = $args;
+        $newNode->expr->args[1] = $args[0];
+        $newNode->expr->args[2] = $args[1];
 
         $newNode->expr->setAttribute('converted', true);
 
